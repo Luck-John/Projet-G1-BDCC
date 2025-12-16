@@ -1,0 +1,11 @@
+# Application Dash et Visualisation
+dash
+pandas
+plotly
+
+# Connecteur AWS Athena
+# Le [pandas] après pyathena est nécessaire pour le support direct des DataFrames
+pyathena[pandas]
+
+# Gestion sécurisée des variables d'environnement (.env)
+python-dotenv

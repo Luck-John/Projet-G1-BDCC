@@ -1,0 +1,338 @@
+/* ========= THEME ========= */
+:root{
+  --bg0: #0b1220;
+  --bg1: #0f1a2e;
+  --card: rgba(255,255,255,0.06);
+  --card2: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.10);
+
+  --text: #eaf0ff;
+  --muted: rgba(234,240,255,0.70);
+
+  --primary: #7c5cff;
+  --cyan: #22d3ee;
+  --green: #34d399;
+  --red: #fb7185;
+  --amber: #fbbf24;
+
+  --shadow: 0 14px 40px rgba(0,0,0,0.35);
+}
+
+/* ========= PAGE ========= */
+body{
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,0.35), transparent 55%),
+    radial-gradient(1000px 500px at 85% 5%, rgba(34,211,238,0.25), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+.app-container{
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 28px 18px 40px;
+}
+
+/* ========= HEADER ========= */
+.header{
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.title{
+  margin: 0;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.subtitle{
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.divider{
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 16px 0;
+}
+
+/* ========= CARDS ========= */
+.card{
+  background: linear-gradient(180deg, var(--card), var(--card2));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  /* IMPORTANT: pas de blur ici (sinon menus/calendar se font flouter) */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  position: relative;
+  z-index: 1;
+}
+
+.card-pad{ padding: 16px; }
+
+/* Blur uniquement sur la card des filtres */
+.filters-card{
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  z-index: 9999 !important;
+}
+
+/* IMPORTANT: empêcher coupure des menus */
+.card, .card-pad, .graph-card{
+  overflow: visible !important;
+}
+
+/* ========= FILTERS ========= */
+.filters{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  align-items: end;
+}
+
+.filter-block label{
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 820px){
+  .filters{ grid-template-columns: 1fr; }
+}
+
+/* ========= DASH CONTROLS (Dropdown/Date) ========= */
+/* zone input */
+.Select-control,
+.DateRangePickerInput{
+  background: rgba(255,255,255,0.10) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 14px !important;
+  color: rgba(234,240,255,0.95) !important;
+}
+
+/* texte du dropdown */
+.Select-placeholder,
+.Select--single > .Select-control .Select-value,
+.Select--single > .Select-control .Select-value .Select-value-label,
+.Select-input > input{
+  color: rgba(234,240,255,0.95) !important;
+}
+
+/* ========= Dropdown menu layering + style ========= */
+.Select,
+.DateRangePicker,
+.DateRangePickerInput,
+.DateInput{
+  position: relative !important;
+  z-index: 20000 !important;
+}
+
+.Select-menu-outer{
+  position: absolute !important;
+  z-index: 30000 !important;
+
+  background: rgba(15,26,46,0.98) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45) !important;
+
+  max-height: 260px !important;
+  overflow-y: auto !important;
+}
+
+.Select-option{
+  background: transparent !important;
+  color: rgba(234,240,255,0.92) !important;
+}
+.Select-option.is-focused{
+  background: rgba(124,92,255,0.18) !important;
+}
+.Select-option.is-selected{
+  background: rgba(124,92,255,0.28) !important;
+}
+
+/* Scrollbar menu dropdown (Chrome/Edge) */
+.Select-menu-outer::-webkit-scrollbar{
+  width: 8px;
+  height: 8px;
+}
+.Select-menu-outer::-webkit-scrollbar-track{
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+}
+.Select-menu-outer::-webkit-scrollbar-thumb{
+  background: rgba(124,92,255,0.45);
+  border-radius: 999px;
+}
+.Select-menu-outer::-webkit-scrollbar-thumb:hover{
+  background: rgba(124,92,255,0.65);
+}
+/* Firefox */
+.Select-menu-outer{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124,92,255,0.55) rgba(255,255,255,0.06);
+}
+
+/* ========= DatePicker visibility + size ========= */
+.DateRangePicker_picker,
+.DateRangePicker_picker__portal{
+  z-index: 30000 !important;
+}
+
+/* Date inputs: lisibles */
+.DateInput_input{
+  background: transparent !important;
+  color: rgba(234,240,255,0.95) !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+}
+
+/* Empêcher la date d'être coupée */
+.DateRangePickerInput{
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.DateInput{ width: 150px !important; }
+.DateInput_input{
+  width: 150px !important;
+  font-size: 18px !important;
+  padding: 10px 12px !important;
+}
+.DateRangePickerInput_arrow{ padding: 0 6px !important; }
+
+/* focus */
+.DateInput_input__focused{
+  background: rgba(255,255,255,0.14) !important;
+  border-bottom: 1px solid rgba(124,92,255,0.75) !important;
+}
+
+/* Calendrier: lisible */
+.DayPicker{
+  background: rgba(15,26,46,0.98) !important;
+  color: rgba(234,240,255,0.95) !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+}
+.CalendarMonth, .CalendarMonthGrid{ background: transparent !important; }
+
+@media (max-width: 820px){
+  .DateInput, .DateInput_input{
+    width: 100% !important;
+  }
+  .DateRangePickerInput{
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+}
+
+/* ========= KPI GRID ========= */
+.kpi-row{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1100px){
+  .kpi-row{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 820px){
+  .kpi-row{ grid-template-columns: 1fr; }
+}
+
+.kpi-card{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  padding: 14px 14px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.kpi-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(124,92,255,0.45);
+  background: rgba(255,255,255,0.07);
+}
+
+.kpi-left{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kpi-title{
+  font-size: 11px;
+  color: rgba(234,240,255,0.70);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kpi-value{
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.kpi-badge{
+  font-size: 12px;
+  font-weight: 900;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: rgba(234,240,255,0.92);
+  white-space: nowrap;
+}
+
+.badge-up{
+  background: rgba(52,211,153,0.15);
+  border-color: rgba(52,211,153,0.30);
+  color: var(--green);
+}
+.badge-down{
+  background: rgba(251,113,133,0.15);
+  border-color: rgba(251,113,133,0.30);
+  color: var(--red);
+}
+.badge-bull{
+  background: rgba(124,92,255,0.16);
+  border-color: rgba(124,92,255,0.34);
+  color: #c7baff;
+}
+.badge-bear{
+  background: rgba(251,191,36,0.16);
+  border-color: rgba(251,191,36,0.34);
+  color: var(--amber);
+}
+
+/* ========= GRAPHS ========= */
+.graph-card{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  position: relative;
+  z-index: 2;
+}
+
+/* ========= FOOTER ========= */
+.footer{
+  margin-top: 16px;
+  color: rgba(234,240,255,0.65);
+  font-size: 12px;
+  text-align: center;
+}
