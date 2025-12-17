@@ -44,7 +44,7 @@ AWS est retenu pour sa maturité Data Lake et l’intégration entre ECS, S3 et 
 
 ## Liens
 - Lien du dashboard : https://60bb60dc-ea8f-4949-9770-51ef6e176a97.plotly.app/
-- Lien de la présentation Canva du pipeline : https://www.canva.com/design/DAG7oIHLEhI/W2LSULwzL3gBGUaz26eKTA
+- Lien de la présentation Canva du pipeline : https://www.canva.com/design/DAG7oIHLEhI/W2LSULwzL3gBGUaz26eKTA/edit
 
 # Auteurs
 - Jean Luc BATABATI
